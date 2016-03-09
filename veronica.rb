@@ -25,3 +25,7 @@ post '/send' do
 		body: message
 	)
 end
+
+get '/' do
+  'Hello world!'
+end
