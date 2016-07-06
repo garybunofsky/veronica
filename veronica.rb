@@ -1,31 +1,15 @@
-require 'sinatra'
+require 'rubygems'
 require 'twilio-ruby'
+require 'sinatra'
 
-post '/receive' do
-	content_type 'text/xml'
-
-	response = Twilio::TwiML::Response.new do |r|
-		r.Message 'Hello, I am Veronica. What is your name?'
+post '/reply' do
+  twiml = Twilio::TwiML::Response.new do |r|
+    r.Message params[:Body]
 	end
-
-	response.to_xml
+  twiml.text
 end
 
-post '/send' do
-	to = params["to"]
-	message = params["body"]
-	client = Twilio::REST::Client.new(
-		ENV['TWILIO_ACCOUNT_SID'],
-		ENV['TWILIO_AUTH_TOKEN']
-	)
-
-	client.messages.create(
-		to: to,
-		from: "+12162424157",
-		body: message
-	)
+get '/reply' do
 end
 
-get '/' do
-  'Hello world!'
-end
+# https://demo.twilio.com/welcome/sms/reply/
