@@ -2,14 +2,15 @@ require 'rubygems'
 require 'twilio-ruby'
 require 'sinatra'
 
-post '/reply' do
+post '/' do
   twiml = Twilio::TwiML::Response.new do |r|
     r.Message params[:Body]
 	end
   twiml.text
 end
 
-get '/reply' do
+get '/' do
+	'veronica'
 end
 
 # https://demo.twilio.com/welcome/sms/reply/
