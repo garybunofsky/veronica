@@ -5,6 +5,11 @@ require 'sinatra'
 require 'api-ai-ruby'
 class Veronica < Sinatra::Base
 
+	idk = [ 'I\'m afraid I don\'t understand.',
+					'I don\'t know what you mean.',
+					'I don\'t understand.',
+					'I\'m sorry, I don\'t understand.'
+				]
 	post '/' do
 
 		# Establish connection with api.ai
@@ -20,7 +25,7 @@ class Veronica < Sinatra::Base
 				# See if Veronica understands the message
 				reply = response[:result][:speech]
 				if reply.empty?
-					r.Message "Sorry, I don't understand."
+					r.Message idk.sample
 				else
 					r.Message reply
 				end
