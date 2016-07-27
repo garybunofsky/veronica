@@ -5,13 +5,7 @@ require 'sinatra'
 require 'api-ai-ruby'
 class Veronica < Sinatra::Base
 
-	idk = [ 'I\'m afraid I don\'t understand.',
-					'I don\'t know what you mean.',
-					'I don\'t understand.',
-					'I\'m sorry, I don\'t understand.'
-				]
 	post '/' do
-
 		# Establish connection with api.ai
 		client = ApiAiRuby::Client.new(
 				:client_access_token => 'e1d0afd773944e738d57d44658e543aa',
@@ -22,17 +16,13 @@ class Veronica < Sinatra::Base
 		if message
 			response = client.text_request message
 			twiml = Twilio::TwiML::Response.new do |r|
-				# See if Veronica understands the message
 				reply = response[:result][:speech]
-				if reply.empty?
-					r.Message idk.sample
-				else
+				if reply
 					r.Message reply
 				end
 			end
 			twiml.text
 		end
-
 	end
 
 	get '/' do
