@@ -29,4 +29,9 @@ class Veronica < Sinatra::Base
 		'Hi, my name is Veronica'
 	end
 
+	get '/voice' do
+		content_type 'text/xml'
+		"<Response><Say voice=\"alice\">Hello my name is Veronica.</Say></Response>"
+	end
+
 end
