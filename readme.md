@@ -1,6 +1,8 @@
 # Veronica
 Veronica is an SMS chatbot. She can tell you today's news, tomorrow's weather forecast, and plenty of other things. You can text Veronica at (321)-233-9118. Don't worry she won't spam you or anything sketchy like that.
 
+![A conversation with Veronica.](/veronica.png?raw=true "A conversation with Veronica.")
+
 __Hi, how are you?__  
 _Lovely, thanks._  
 
