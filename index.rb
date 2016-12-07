@@ -16,7 +16,7 @@ class Veronica < Sinatra::Base
 		if message
 			response = client.text_request message
 			twiml = Twilio::TwiML::Response.new do |r|
-				reply = response[:result][:speech]
+				reply = response[:result][:fulfillment][:speech]
 				if reply
 					r.Message reply
 				end
@@ -31,7 +31,7 @@ class Veronica < Sinatra::Base
 
 	get '/voice' do
 		content_type 'text/xml'
-		"<Response><Say voice=\"alice\">Hello my name is Veronica.</Say></Response>"
+		"<Response><Say voice=\"alice\">Hello my name is Veronica.</Say><Pause length=\"1\"/><Say voice=\"alice\">I was built by Gary Bunofsky on March</Say></Response>"
 	end
 
-end
+ end
