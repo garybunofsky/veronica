@@ -2,6 +2,7 @@
 .DS_Store
 config/application.yml
 ngrok
+sources.rb
 
 # Ignore application configuration
 /config/application.yml
